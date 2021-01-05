@@ -48,5 +48,10 @@ l(6) = Link([0, 0, 0, 0, 0]);
 
 Robot = SerialLink(l)
 Robot.name = 'Staubli';
-cIKTE = Robot.fkine([0 0 0 0 0 0])
-Robot.plot([0, -pi/2, pi/2, 0, 0, 0]) %, 0, 0, 0, 0
+
+%ik_sol(joint_coordinate_sol) = Robot.ikine(e-e pose T, joint_coordinate_init, options)
+T = transl(0.5, 0.5, 0.5) %SE(3) homogeneous transform 4x4 representing a pure translation x,y and z.
+ik_sol = Robot.ikine(T, [0, -pi/2, pi/2, 0, 0, 0])
+
+%cIKTE = Robot.fkine([0 0 0 0 0 0])
+Robot.plot(ik_sol)
