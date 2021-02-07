@@ -153,12 +153,6 @@ def main():
     scene = moveit_commander.PlanningSceneInterface()
     rospy.sleep(2)
 
-    p = geometry_msgs.msg.PoseStamped()
-    p.header.frame_id = robot.get_planning_frame()
-    p.pose.position.x = 0.745
-    p.pose.position.y = 0.0
-    p.pose.position.z = 0.115
-    scene.add_box("cfrp", p, (0.1, 0.1, 0.0025))
     # Get group_commander from MoveGroupCommander
     group_name = "tx_90"
     move_group = moveit_commander.MoveGroupCommander(group_name)
@@ -169,12 +163,10 @@ def main():
     #position and senario position dictionray initiate
     pos_dic, senario_dic = senario_pos_dic_key_init()   
     #initial default pose
-    move_to_pos(move_group,pos_dic['init_pose'])                         
-
-    #test four posture senario for four drill point 
-    for a in range(1,5):
-        four_point_test(move_group, a, pos_dic, senario_dic)
-    rospy.info("end of test")
+    test = [0,0,0,0,0,0]
+    senario(move_group, test)
+    # test = [pi/3, pi/3, pi/3, pi/3, pi/3, pi/3]
+    # senario(move_group, test)
     quit()
 
 if __name__ == "__main__":
