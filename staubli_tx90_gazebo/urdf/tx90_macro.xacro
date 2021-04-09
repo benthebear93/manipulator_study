@@ -67,6 +67,16 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
+<!--   <transmission name="${prefix}tran7">
+    <robotNamespace>/${prefix}</robotNamespace>
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${prefix}joint_7">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${prefix}motor7">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission> -->
   <!-- end of transmission list -->
 
   <!-- Gazebo-specific link properties -->
@@ -95,6 +105,10 @@
     <turnGravityOff>true</turnGravityOff>
   </gazebo>
   <gazebo reference="${prefix}link_6">
+    <material>Gazebo/Grey</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  <gazebo reference="${prefix}link_7">
     <material>Gazebo/Grey</material>
     <turnGravityOff>true</turnGravityOff>
   </gazebo>
